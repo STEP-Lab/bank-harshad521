@@ -1,7 +1,12 @@
 .idea/
-gradlew
-.gradle
 *.bat
 out/
-gradle
-*.iml
+*.imlgi
+build/
+.settings/
+gradle/
+gradlew
+gradlew.bat
+.gradle
+.project
+
