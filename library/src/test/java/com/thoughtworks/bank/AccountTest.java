@@ -11,7 +11,7 @@ public class AccountTest {
     private Account account;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() throws MinimumBalanceException, InvalidAccountNumberException {
         account = new Account("1234-5678",2000.00);
     }
 
