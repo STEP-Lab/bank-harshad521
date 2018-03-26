@@ -20,14 +20,14 @@ public class Transaction {
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
         return Double.compare( that.amount, amount ) == 0 &&
-                Objects.equals( date, that.date ) &&
+                Objects.equals( date.toString(), that.date.toString() ) &&
                 Objects.equals( beneficiary, that.beneficiary );
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash( date, amount, beneficiary );
+        return Objects.hash( date.toString(), amount, beneficiary );
     }
 
     public Date getDate(){

@@ -12,4 +12,7 @@ public class Transactions {
     }
 
 
+    public void credit(double amount, String beneficiary) {
+        transactionLog.add(new CreditTransaction(amount,beneficiary));
+    }
 }

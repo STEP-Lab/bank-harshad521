@@ -11,8 +11,8 @@ public class AccountTest {
     private Account account;
 
     @Before
-    public void setUp() throws MinimumBalanceException, InvalidAccountNumberException {
-        account = new Account(new AccountNumber("1234-5678"),2000.00);
+    public void setUp() throws InvalidAccountNumberException, MinimumBalanceException {
+        account = Account.createAccount("1234-5678",2000.00,"Jack");
     }
 
     @Test
@@ -23,32 +23,7 @@ public class AccountTest {
 
     @Test(expected = MinimumBalanceException.class)
     public void checkMinimumOpeningBalance () throws MinimumBalanceException, InvalidAccountNumberException {
-        new Account(new AccountNumber("1234-5678") ,400.00);
+        Account.createAccount("1234-5678" ,400.00,"Jack");
     }
 
-
-
-    @Test
-    public void creditMoney() throws MinimumBalanceException {
-        assertThat( account.getBalance(),is( 2000.00 ));
-        assertThat( account.credit(1000.00),is(3000.00) );
-    }
-
-    @Test
-    public void debitMoney() throws MinimumBalanceException {
-        assertThat( account.getBalance(),is(2000.00) );
-        assertThat( account.debit(1000.00),is(1000.00) );
-    }
-
-    @Test(expected = MinimumBalanceException.class)
-    public void validateIsAbleToCredit() throws MinimumBalanceException{
-        assertThat( account.getBalance(),is( 2000.00 ) );
-        account.credit( -1.00 );
-    }
-
-    @Test(expected = MinimumBalanceException.class)
-    public void validateIsAbleToDebit() throws MinimumBalanceException{
-        assertThat( account.getBalance(),is(2000.00) );
-        account.debit(2000.54);
-    }
 }
